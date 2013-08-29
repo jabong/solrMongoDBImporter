@@ -32,7 +32,7 @@ Thi is a MongoDB Data Importer for Solr.
 	1. deltaCommand (optional, if not set, and request a delta import, we will use command instead)
 	
 ```xml
-<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" command="{}">
+<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" query="{}">
 	<field column="_id" name="docId"/>
 	<field column="title" name="title"/>
 	<!-- other fileds -->
@@ -52,7 +52,7 @@ This transfomer just cover the ObjectId to it's hashcode :-)
 </entity>
 ```
 
-### Put it together
+### full import & delta import
 ```xml
 <dataConfig>
 	<dataSource name="mongod" type="MongoDataSource" host="127.0.0.1" port="27017" database="example" />
