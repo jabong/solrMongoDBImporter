@@ -1,5 +1,7 @@
 # Solr MongoDB Importer
-Thi is a MongoDB Data Importer for Solr.
+Thi is a MongoDB Data Importer for Solr. 
+
+Update：Fixed full import and delta import (backward compatible with Solr3.6)
 
 ## Features
 * import data from MongoDB to solr
@@ -52,7 +54,7 @@ This transfomer just cover the ObjectId to it's hashcode :-)
 </entity>
 ```
 
-### full import & delta import
+### full import & delta import, delta import may need convert datetime to ISODatetime, which backward compatible with Solr3.6
 ```xml
 <dataConfig>
 	<dataSource name="mongod" type="MongoDataSource" host="127.0.0.1" port="27017" database="example" />
