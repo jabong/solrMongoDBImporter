@@ -54,7 +54,7 @@ This transfomer just cover the ObjectId to it's hashcode :-)
 </entity>
 ```
 
-### full import & delta import, delta import may need convert datetime to ISODatetime, which backward compatible with Solr3.6
+### Full import & delta import. Delta import may need convert datetime to ISODatetime, which backward compatible with Solr3.6
 ```xml
 <dataConfig>
 	<dataSource name="mongod" type="MongoDataSource" host="127.0.0.1" port="27017" database="example" />
