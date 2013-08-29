@@ -21,7 +21,7 @@ Thi is a MongoDB Data Importer for Solr.
 
 ```xml
 <dataConfig>
-	<dataSource name="mongod" type="MongoDataSource" host="127.0.0.1" port="27017" database="example" />
+	<dataSource name="mongod" type="MongoDBDataSource" host="127.0.0.1" port="27017" database="example" />
 </dataConfig>
 ```
 
@@ -45,7 +45,7 @@ Somethime we need a Long docId, but we have ObjectId in MongoDB, so a transforme
 This transfomer just cover the ObjectId to it's hashcode :-)
 
 ```xml
-<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" command="{}">
+<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" query="{}">
 	<field column="_id" name="docId" hashObjectId="true"/> <!-- docId has long type-->
 	<field column="title" name="title"/>
 	<!-- other fileds -->
@@ -56,7 +56,8 @@ This transfomer just cover the ObjectId to it's hashcode :-)
 ```xml
 <dataConfig>
 	<dataSource name="mongod" type="MongoDataSource" host="127.0.0.1" port="27017" database="example" />
-	<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" command="{}">
+	<entity processor="MongoDBEntityProcessor" dataSource="mongod" name="test" collection="coll" processor="MongoDBEntityProcessor" dataSource="mongod" collection="p_movie"
+				query="{}" deltaImportQuery="{'lastmodified':{'$gt':{'$date':'${dataimporter.last_index_time}'}}}" deltaQuery="{'lastmodified':{'$lt':{'$date':'${dataimporter.last_index_time}'}}}" >
 		<field column="_id" name="docId" hashObjectId="true"/> <!-- docId has long type-->
 		<field column="title" name="title"/>
 		<!-- other fileds -->
