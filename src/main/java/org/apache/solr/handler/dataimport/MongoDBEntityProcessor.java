@@ -29,7 +29,6 @@ public class MongoDBEntityProcessor extends EntityProcessorBase {
     protected void initQuery(String q) {
         try {
             q = replaceDateTimeToISODateTime(q);
-            System.out.println("--------------------------:" + q);
             DataImporter.QUERY_COUNT.get().incrementAndGet();
             rowIterator = mongoDBDataSource.getData(q, collection);
             this.query = q;
